@@ -1,26 +1,32 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import { createRouter, createWebHistory, RouteRecordRaw, createWebHashHistory } from "vue-router";
+import homeViewVue from "@/views/home/homeView.vue";
 
 const routes: Array<RouteRecordRaw> = [
-  {
-    path: "/",
-    name: "home",
-    component: HomeView,
-  },
-  {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
-  },
+    {
+        path: '/',
+        name: 'home',
+        redirect: '/01',
+        
+        children: [
+            {
+                path: '/01',
+                component: () => import('@/components/music/musicOne.vue')
+            },
+            {
+                path: '/02',
+                component: () => import('@/components/music/musicTwo.vue')
+            },
+            {
+                path: '/03',
+                component: () => import('@/components/music/musicThree.vue')
+            }
+        ]
+    }
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes,
+    history: createWebHashHistory(process.env.BASE_URL),
+    routes
 });
 
 export default router;

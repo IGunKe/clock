@@ -1,0 +1,5 @@
+body {
+    user-select: none;
+    -webkit-app-region: drag;
+    background: var(--ipoke-bg-color);
+}
