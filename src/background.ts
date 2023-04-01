@@ -1,3 +1,10 @@
+/*
+ * @Author: 向德剑
+ * @Date: 2023-03-22 14:39:09
+ * @LastEditors: Do not edit
+ * @LastEditTime: 2023-04-01 16:08:33
+ * @FilePath: \clock\src\background.ts
+ */
 'use strict';
 
 import { app, protocol, BrowserWindow, session } from 'electron';
@@ -21,7 +28,7 @@ async function createWindow() {
         height: 600,
         frame: false,
         title: 'xdj.clock',
-        icon: './assets/logo.png',
+        icon: './assets/favicon.ico',
         webPreferences: {
             nodeIntegration: process.env
                 .ELECTRON_NODE_INTEGRATION as unknown as boolean,
@@ -37,8 +44,8 @@ async function createWindow() {
         useTray(win, iconPath);
     } else {
         createProtocol('app');
-        // win.loadURL('app://./index.html');
-        win.loadURL(`file://${__dirname}/main.html`);
+        win.loadURL('app://./index.html');
+        // win.loadFile(`file://${__dirname}/main.html`);
         useTray(win, iconPath);
     }
 }

@@ -74,6 +74,7 @@ module.exports = defineConfig({
                 appId: 'alarm.clock.xdj.vu3', // 软件id
                 productName: '闹钟', // 打包后的名称
                 // windows系统相关配置
+                asar: false,
                 win: {
                     // 应用图标路径（Windows 系统中 icon 需要 256 * 256 的 ico 格式图片）
                     icon: './src/assets/favicon.ico',
@@ -90,9 +91,12 @@ module.exports = defineConfig({
                     oneClick: false,
                     // 允许修改安装目录
                     allowToChangeInstallationDirectory: true,
+                    deleteAppDataOnUninstall: true,
+                    createDesktopShortcut: true,
                     guid: 'alarm.clock.xdj.vu3', // 软件id
                     include: './installer.nsh'
                 }
+                
             }
         }
     }
